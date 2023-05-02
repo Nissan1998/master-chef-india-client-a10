@@ -7,10 +7,10 @@ const Home = () => {
       <Hero></Hero>
       <Container>
         <Row>
-          <Col style={{ backgroundColor: "red" }} sm={9}>
+          <Col style={{ backgroundColor: "black" }} sm={2}>
             sm=8
           </Col>
-          <Col sm={3}>sm=4</Col>
+          <Col sm={10}>sm=4</Col>
         </Row>
       </Container>
     </div>
