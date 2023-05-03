@@ -3,13 +3,12 @@ import Header from "../Pages/Shared/Header/Header";
 import Footer from "../Pages/Shared/Footer/Footer";
 import { Outlet } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
-import Hero from "../Pages/HeroSection/Hero";
 
-const Main = () => {
+const RecipeDetails = () => {
   return (
-    <div className="bg-dark">
+    <div>
       <Header></Header>
-      <Hero></Hero>
+
       <Container>
         <Row>
           <Col lg={12}>
@@ -22,4 +21,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default RecipeDetails;
