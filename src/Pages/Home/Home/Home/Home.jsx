@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Card from "../../../Shared/DisplayCard/ChefCard";
 import ChefCard from "../../../Shared/DisplayCard/ChefCard";
+import ExtraSection from "../../../Shared/extrasection/ExtraSection";
+import BottomSection from "../../../Shared/extrasection/BottomSection";
+
 const Home = () => {
   const [categoriesChef, setCategories] = useState([]);
   console.log(categoriesChef);
@@ -10,9 +12,15 @@ const Home = () => {
       .then((data) => setCategories(data));
   }, []);
   return (
-    <div className="mt-5">
-      <h1 className="h-screen text-center text-white">OUR MASTER CHEFS</h1>
+    <div className="mt-5 mb-5">
+      <h1 className="h-screen text-center">OUR MASTER CHEFS</h1>
       <ChefCard categoriesChef={categoriesChef}></ChefCard>
+      <div>
+        <ExtraSection></ExtraSection>
+      </div>
+      <div>
+        <BottomSection></BottomSection>
+      </div>
     </div>
   );
 };

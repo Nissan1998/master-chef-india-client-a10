@@ -11,21 +11,25 @@ const ChefCard = ({ categoriesChef }) => {
           <Col key={idx}>
             <Card className="h-100">
               <Card.Img
-                className="h-75 w-75 mx-auto p-3"
+                style={{ height: 250 }}
+                className=" w-75 mx-auto p-3"
                 variant="top"
-                src={chef.image}
+                src={chef?.image}
               />
               <Card.Body>
-                <Card.Title>{chef.name}</Card.Title>
+                <Card.Title>{chef?.name}</Card.Title>
                 <Card.Text>
                   <a className="d-flex text-decoration-none text-black align-items-center justify-content-center">
-                    <AiFillLike /> {chef.likes}
+                    <AiFillLike /> {chef?.likes}
                   </a>
+                  <>Total Recipes:{chef?.recipes}</>
+                  <br></br>
+                  <span>Experience:-{chef?.experience}Years</span>
                 </Card.Text>
               </Card.Body>
               <Button variant="warning" size="lg">
                 <Link
-                  to={`/categories/${chef.id}`}
+                  to={`/categories/${chef?.id}`}
                   className="text-black text-decoration-none"
                 >
                   View Recipes

@@ -7,7 +7,7 @@ import Hero from "../Pages/HeroSection/Hero";
 
 const Main = () => {
   return (
-    <div className="bg-dark">
+    <div className="">
       <Header></Header>
       <Hero></Hero>
       <Container>
