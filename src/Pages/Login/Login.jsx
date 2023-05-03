@@ -6,12 +6,10 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import React from "react";
-import Header from "../Shared/Header/Header";
-import Footer from "../Shared/Footer/Footer";
 
 const Login = () => {
   return (
-    <div>
+    <div className="w-75 mx-auto">
       <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
         <MDBInput
           wrapperClass="mb-4"
@@ -90,7 +88,6 @@ const Login = () => {
           </div>
         </div>
       </MDBContainer>
-      <Footer></Footer>
     </div>
   );
 };

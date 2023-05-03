@@ -50,6 +50,9 @@ const Header = () => {
               <Link className=" btn btn-warning" to="login">
                 Login
               </Link>
+              <Link className="ms-2 btn btn-warning" to="register">
+                SignUp
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
