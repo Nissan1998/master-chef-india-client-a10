@@ -30,9 +30,5 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "*",
-  //   element: <ErrorPage></ErrorPage>,
-  // },
 ]);
 export default router;

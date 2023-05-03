@@ -36,7 +36,9 @@ const Header = () => {
                 <NavLink
                   to="/blog"
                   className={({ isActive }) =>
-                    isActive ? "text-warning" : "text-white"
+                    isActive
+                      ? "text-warning text-decoration-none"
+                      : "text-white text-decoration-none"
                   }
                 >
                   Blog
