@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Image, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 
 const Header = () => {
+  const [isActive, setActive] = useState(false);
+  const activeRoute = () => {
+    setActive(true);
+  };
   return (
     <div>
       <Navbar expand="lg" bg="dark" variant="dark">
