@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Image, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 
 const Header = () => {
@@ -19,16 +19,30 @@ const Header = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav.Link className="ms-auto">
-              <Link className="me-2 text-decoration-none text-white " to="/">
-                Home
-              </Link>
-            </Nav.Link>
-            <Nav.Link className="me-auto">
-              <Link className=" text-decoration-none text-white " to="blog">
-                Blog
-              </Link>
-            </Nav.Link>
+            <div className="d-flex  mx-auto ">
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-warning text-decoration-none"
+                      : "text-white text-decoration-none"
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/blog"
+                  className={({ isActive }) =>
+                    isActive ? "text-warning" : "text-white"
+                  }
+                >
+                  Blog
+                </NavLink>
+              </li>
+            </div>
             <Nav>
               <Nav.Link href="#deets">Profile</Nav.Link>
               <Link className=" btn btn-warning" to="login">

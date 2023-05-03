@@ -7,9 +7,7 @@ const Category = () => {
   const { id } = useParams();
   return (
     <div>
-      <Header></Header>
       <h3>this category{id}</h3>
-      <Footer></Footer>
     </div>
   );
 };

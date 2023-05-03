@@ -12,19 +12,22 @@ import Footer from "../Shared/Footer/Footer";
 const Login = () => {
   return (
     <div>
-      <Header></Header>
       <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
         <MDBInput
           wrapperClass="mb-4"
           label="Email address"
           id="form1"
           type="email"
+          required
+          name="email"
         />
         <MDBInput
           wrapperClass="mb-4"
           label="Password"
           id="form2"
           type="password"
+          name="email"
+          required
         />
 
         <div className="d-flex justify-content-between mx-3 mb-4">

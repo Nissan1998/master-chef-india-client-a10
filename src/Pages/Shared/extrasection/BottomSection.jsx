@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 const BottomSection = () => {
   return (
     <div>
-      <div className="p-5 w-100">
+      <div className="w-100">
         <h1 className="text-center mt-5">OUR CHEF SECRET FOODS</h1>
         <Marquee>
           <img
