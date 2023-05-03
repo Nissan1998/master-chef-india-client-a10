@@ -14,7 +14,7 @@ const Header = () => {
         <Container>
           <Navbar.Brand>
             <Link to="/">
-              <Image roundedCircle width={80} src={logo}></Image>
+              <Image rounded width={160} src={logo}></Image>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

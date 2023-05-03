@@ -17,7 +17,7 @@ const Home = () => {
     <div>
       <Hero></Hero>
       <Container>
-        <h1 className="h-screen text-center">OUR MASTER CHEFS</h1>
+        <h1 className="h-screen text-center mt-5">OUR MASTER CHEFS</h1>
         <ChefCard categoriesChef={categoriesChef}></ChefCard>
         <div>
           <ExtraSection></ExtraSection>

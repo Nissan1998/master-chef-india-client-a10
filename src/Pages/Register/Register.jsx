@@ -1,78 +1,116 @@
-import {
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBCheckbox,
-  MDBContainer,
-  MDBInput,
-} from "mdb-react-ui-kit";
-import React from "react";
+import React, { useContext } from "react";
+import { Button, Container, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+import { useState } from "react";
+import { AuthContext } from "../../PrivetRoute/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+  const [accepted, setAccepted] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(name, photo, email, password);
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+        setSuccess("Account Successfully Created");
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
+  };
+
+  const handleAccepted = (event) => {
+    setAccepted(event.target.checked);
+  };
+
   return (
-    <div>
-      <MDBContainer
-        fluid
-        className="d-flex align-items-center justify-content-center bg-image"
-        style={{
-          backgroundImage:
-            "url(https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp)",
-        }}
-      >
-        <div className="mask gradient-custom-3"></div>
-        <MDBCard className="m-5" style={{ maxWidth: "600px" }}>
-          <MDBCardBody className="px-5">
-            <h2 className="text-uppercase text-center mb-5">
-              Create an account
-            </h2>
-            <MDBInput
-              wrapperClass="mb-4"
-              label="Your Name"
-              size="lg"
-              id="form1"
+    <div
+      style={{
+        backgroundImage:
+          "url(https://i.pinimg.com/originals/03/34/46/033446fbc676ac0643401c1092ea1c71.jpg)",
+        height: 700,
+        overflow: "hidden",
+      }}
+    >
+      <Container className="w-25 mx-auto">
+        <h3 className="text-center text-white">Please Register</h3>
+        <h4 className="text-center text-success">{success}</h4>
+        <h4 className="text-center text-danger">{error}</h4>
+        <Form onSubmit={handleRegister}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
               type="text"
+              name="name"
+              placeholder="Your Name"
+              required
             />
-            <MDBInput
-              wrapperClass="mb-4"
-              label="Your_Photo"
-              size="lg"
-              id="form1"
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Photo URL</Form.Label>
+            <Form.Control
               type="text"
+              name="photo"
+              placeholder="Photo URL"
+              required
             />
-            <MDBInput
-              wrapperClass="mb-4"
-              label="Your Email"
-              size="lg"
-              id="form2"
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
               type="email"
+              name="email"
+              placeholder="Enter email"
+              required
             />
-            <MDBInput
-              wrapperClass="mb-4"
-              label="Password"
-              size="lg"
-              id="form3"
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
               type="password"
+              name="password"
+              placeholder="Password"
+              required
             />
-            <MDBInput
-              wrapperClass="mb-4"
-              label="Repeat your password"
-              size="lg"
-              id="form4"
-              type="password"
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Check
+              onClick={handleAccepted}
+              type="checkbox"
+              name="accept"
+              label={
+                <>
+                  Accept <Link to="/terms">Terms and Conditions</Link>{" "}
+                </>
+              }
             />
-            <div className="d-flex flex-row justify-content-center mb-4">
-              <MDBCheckbox
-                name="flexCheck"
-                id="flexCheckDefault"
-                label="I agree all statements in Terms of service"
-              />
-            </div>
-            <MDBBtn className="mb-4 w-100 gradient-custom-4" size="lg">
-              Register
-            </MDBBtn>
-          </MDBCardBody>
-        </MDBCard>
-      </MDBContainer>
+          </Form.Group>
+          <Button variant="warning" disabled={!accepted} type="submit">
+            Register
+          </Button>
+          <br />
+          <Form.Text className="text-secondary">
+            Already Have an Account? <Link to="/login">Login</Link>
+          </Form.Text>
+          <Form.Text className="text-success"></Form.Text>
+          <Form.Text className="text-danger"></Form.Text>
+        </Form>
+      </Container>
     </div>
   );
 };
