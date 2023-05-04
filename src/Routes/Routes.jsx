@@ -29,6 +29,10 @@ const router = createBrowserRouter([
             <Category></Category>
           </SecretRouter>
         ),
+        loader: ({ params }) =>
+          fetch(
+            `https://master-chef-india-server-nissan1998.vercel.app/categories/${params.id}`
+          ),
       },
       {
         path: "login",

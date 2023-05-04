@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, Col, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiFillLike } from "react-icons/ai";
+import LazyLoad from "react-lazyload";
 
 const ChefCard = ({ categoriesChef, loading }) => {
   if (loading) {
@@ -18,12 +19,14 @@ const ChefCard = ({ categoriesChef, loading }) => {
         {Array.from(categoriesChef).map((chef, idx) => (
           <Col key={idx}>
             <Card className="h-100">
-              <Card.Img
-                style={{ height: 250 }}
-                className=" w-75 mx-auto p-3"
-                variant="top"
-                src={chef?.image}
-              />
+              <LazyLoad>
+                <Card.Img
+                  style={{ height: 250 }}
+                  className=" w-75 mx-auto p-3"
+                  variant="top"
+                  src={chef?.image}
+                />
+              </LazyLoad>
               <Card.Body>
                 <Card.Title>{chef?.name}</Card.Title>
                 <Card.Text>

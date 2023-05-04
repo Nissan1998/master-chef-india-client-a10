@@ -3,7 +3,7 @@ import ChefCard from "../../../Shared/DisplayCard/ChefCard";
 import ExtraSection from "../../../Shared/extrasection/ExtraSection";
 import BottomSection from "../../../Shared/extrasection/BottomSection";
 import Hero from "../../../HeroSection/Hero";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -15,6 +15,14 @@ const Home = () => {
       .then((data) => setCategories(data));
     setLoading(false);
   }, []);
+  if (loading) {
+    return (
+      <div className="mx-auto bg-light w-25">
+        <Spinner animation="border" variant="danger" />
+        <Spinner animation="border" variant="warning" />
+      </div>
+    );
+  }
   return (
     <div>
       <Hero></Hero>
