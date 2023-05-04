@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import { AuthContext } from "../../PrivetRoute/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -11,29 +12,59 @@ const Register = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
+  /*
+  Navigate to Homepage............. 
+  */
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log("login page location", location);
+  const from = location.state?.from?.pathname || "/";
+
+  //Registration process...............................
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const photo = form.photo.value;
+    const photoUrl = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(name, photo, email, password);
+    if (password.length < 6) {
+      return setError("PassWord must have 6 letter");
+    }
+
+    console.log(name, photoUrl, email, password);
+
     createUser(email, password)
       .then((result) => {
-        const createdUser = result.user;
-        console.log(createdUser);
+        const newUser = result.user;
+        handleUserData(result.user, name, photoUrl);
         setSuccess("Account Successfully Created");
+        navigate(from, { replace: true });
+        setError("");
       })
       .catch((error) => {
         console.log(error);
         setError(error.message);
+        setSuccess("");
       });
   };
 
   const handleAccepted = (event) => {
     setAccepted(event.target.checked);
+  };
+  const handleUserData = (user, name, photoURL) => {
+    updateProfile(user, {
+      displayName: name,
+      photoURL: photoURL,
+    })
+      .then(() => {
+        console.log("user name updated");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setError(error.message);
+      });
   };
 
   return (
@@ -45,7 +76,7 @@ const Register = () => {
         overflow: "hidden",
       }}
     >
-      <Container className="w-25 mx-auto">
+      <Container className="w-50 mx-auto p-5 text-white">
         <h3 className="text-center text-white">Please Register</h3>
         <h4 className="text-center text-success">{success}</h4>
         <h4 className="text-center text-danger">{error}</h4>
@@ -104,8 +135,11 @@ const Register = () => {
             Register
           </Button>
           <br />
-          <Form.Text className="text-secondary">
-            Already Have an Account? <Link to="/login">Login</Link>
+          <Form.Text className="text-warning">
+            Already Have an Account?{" "}
+            <Link className="text-white" to="/login">
+              Login
+            </Link>
           </Form.Text>
           <Form.Text className="text-success"></Form.Text>
           <Form.Text className="text-danger"></Form.Text>

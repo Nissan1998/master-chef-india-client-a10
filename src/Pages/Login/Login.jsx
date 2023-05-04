@@ -1,17 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../PrivetRoute/AuthProvider";
-import { AiFillGoogleSquare } from "react-icons/ai";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+} from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
 
 const Login = () => {
+  const previousLocation = useLocation();
+  console.log("login page", previousLocation);
+  const [error, setError] = useState("");
   const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
+  const gitHubProvider = new GithubAuthProvider();
+
   const handleGoogleSignIn = () => {
     console.log("googleclicked");
-    signInWithPopup(auth, provider)
+    signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
         navigate(from, { replace: true });
@@ -21,6 +30,18 @@ const Login = () => {
         console.log(error.message);
       });
   };
+  //GitHub SignIn Process--------->
+  const handleGithub = () => {
+    signInWithPopup(auth, gitHubProvider)
+      .then((result) => {
+        const user = result.user;
+        // navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,7 +54,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-
+    setError("");
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
@@ -42,6 +63,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setError(error.message);
       });
   };
 
@@ -49,11 +71,15 @@ const Login = () => {
     <div
       style={{
         backgroundImage: "url(https://wallpaper.dog/large/17008270.jpg)",
-        height: 500,
+        height: 600,
       }}
     >
-      <Container className="w-25 mx-auto">
+      <Container className="w-50 mx-auto p-5">
         <h4 className="text-center text-white">Please Login</h4>
+        <h3 className="text-danger">
+          {error ? "Wrong:-" : ""}
+          {error}
+        </h3>
         <Form className="mb-2" onSubmit={handleLogin}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="text-white">Email address</Form.Label>
@@ -73,6 +99,10 @@ const Login = () => {
               placeholder="Password"
               required
             />
+            <Form.Text>
+              Forget PassWord?
+              <Link>Reset Password</Link>
+            </Form.Text>
           </Form.Group>
 
           <Button variant="warning" type="submit">
@@ -91,8 +121,9 @@ const Login = () => {
             alt=""
           />
         </Button>
-        <Button variant="light">
+        <Button onClick={handleGithub} variant="light">
           <img
+            id="GitHub"
             style={{ width: 25 }}
             src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
             alt=""

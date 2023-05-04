@@ -1,9 +1,17 @@
 import React from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiFillLike } from "react-icons/ai";
 
-const ChefCard = ({ categoriesChef }) => {
+const ChefCard = ({ categoriesChef, loading }) => {
+  if (loading) {
+    return (
+      <div className="mx-auto bg-light w-25">
+        <Spinner animation="border" variant="danger" />
+        <Spinner animation="border" variant="warning" />
+      </div>
+    );
+  }
   return (
     <div>
       <Row xs={1} md={2} lg={4} className="g-2 text-center">

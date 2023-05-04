@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Blog from "../Pages/Blogs/Blog";
 import Register from "../Pages/Register/Register";
+import SecretRouter from "../PrivetRoute/SecretRoute/SecretRouter";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/categories/:id",
-        element: <Category></Category>,
+        element: (
+          <SecretRouter>
+            <Category></Category>
+          </SecretRouter>
+        ),
       },
       {
         path: "login",
