@@ -29,9 +29,7 @@ const Footer = () => {
             <a href="" className="me-4 text-warning">
               <MDBIcon fab icon="instagram" />
             </a>
-            <a href="" className="me-4 text-warning">
-              <MDBIcon fab icon="linkedin" />
-            </a>
+
             <a href="" className="me-4 text-warning">
               <MDBIcon fab icon="github" />
             </a>
@@ -54,25 +52,25 @@ const Footer = () => {
               </MDBCol>
 
               <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold mb-4">Products</h6>
+                <h6 className="text-uppercase fw-bold mb-4">Main Content</h6>
                 <p>
                   <a href="/" className="text-reset">
-                    Recipes
+                    Home
                   </a>
                 </p>
                 <p>
-                  <a href="#!" className="text-reset">
-                    Chefs
+                  <a href="/blog" className="text-reset">
+                    Blogs
                   </a>
                 </p>
                 <p>
-                  <a href="#!" className="text-reset">
-                    Cooks
+                  <a href="/login" className="text-reset">
+                    Login
                   </a>
                 </p>
                 <p>
-                  <a href="#!" className="text-reset">
-                    Drinks
+                  <a href="/register" className="text-reset">
+                    Register
                   </a>
                 </p>
               </MDBCol>

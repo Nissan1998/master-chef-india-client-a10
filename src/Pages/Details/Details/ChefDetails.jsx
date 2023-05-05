@@ -50,10 +50,9 @@ const ChefDetails = ({ chefDetails }) => {
             </MDBCol>
           </MDBRow>
         </MDBCard>
-
-        <div>
-          <MenuCard dishes={dishes}></MenuCard>
-        </div>
+      </div>
+      <div className="mt-5">
+        <MenuCard dishes={dishes}></MenuCard>
       </div>
     </div>
   );

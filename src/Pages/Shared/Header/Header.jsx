@@ -66,7 +66,7 @@ const Header = () => {
                     style={{ width: 40 }}
                     title={user?.displayName}
                     className="rounded-circle  ms-2"
-                    src={user.photoURL}
+                    src={user?.photoURL}
                   ></img>
                 ) : (
                   ""

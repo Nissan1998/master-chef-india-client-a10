@@ -27,7 +27,7 @@ const Login = () => {
         console.log(user);
       })
       .catch((error) => {
-        console.log(error.message);
+        setError(error.message);
       });
   };
   //GitHub SignIn Process--------->
@@ -35,7 +35,7 @@ const Login = () => {
     signInWithPopup(auth, gitHubProvider)
       .then((result) => {
         const user = result.user;
-        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
