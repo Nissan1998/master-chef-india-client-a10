@@ -6,9 +6,18 @@ const ref = React.createRef();
 const Blog = () => {
   return (
     <div>
-      <div ref={ref} style={{ height: 500 }}>
-        <h3 className="text-center">Q&A Section</h3>
-        <div>
+      <div>
+        <Container className="text-center mt-2 mb-5">
+          <Pdf targetRef={ref} filename="Q&A-section.pdf">
+            {({ toPdf }) => (
+              <Button variant="warning" onClick={toPdf}>
+                Download to Pdf
+              </Button>
+            )}
+          </Pdf>
+        </Container>
+        <div ref={ref}>
+          <h3 className="text-center">Q&A Section</h3>
           <Container>
             <Accordion defaultActiveKey="0" flush>
               <Accordion.Item eventKey="0">
@@ -102,17 +111,7 @@ const Blog = () => {
           </Container>
         </div>
       </div>
-      <div>
-        <Container className="text-center">
-          <Pdf targetRef={ref} filename="Q&A-section.pdf">
-            {({ toPdf }) => (
-              <Button variant="warning" onClick={toPdf}>
-                Download to Pdf
-              </Button>
-            )}
-          </Pdf>
-        </Container>
-      </div>
+      <div></div>
     </div>
   );
 };
