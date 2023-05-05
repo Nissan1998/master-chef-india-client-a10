@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.VITE_APIKEY,
-  authDomain: import.meta.VITE_AUTHDOMAIN,
-  projectId: import.meta.VITE_PROJECTID,
-  storageBucket: import.meta.VITE_STORAGEBUCKET,
-  messagingSenderId: import.meta.VITE_MESSAGINGSENDERID,
-  appId: import.meta.VITE_APPID,
+  apiKey: "AIzaSyAMSMJKgdQGheIln13hIPpeFnHmTp1V-Js",
+  authDomain: "indian-master-chef.firebaseapp.com",
+  projectId: "indian-master-chef",
+  storageBucket: "indian-master-chef.appspot.com",
+  messagingSenderId: "64828781407",
+  appId: "1:64828781407:web:c95aa8faf908a561653cea",
 };
 
 // Initialize Firebase

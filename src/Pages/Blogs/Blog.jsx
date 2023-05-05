@@ -1,10 +1,12 @@
 import React from "react";
-import { Accordion, Container } from "react-bootstrap";
+import { Accordion, Button, Container, TabContainer } from "react-bootstrap";
+import Pdf from "react-to-pdf";
 
+const ref = React.createRef();
 const Blog = () => {
   return (
     <div>
-      <div style={{ height: 500 }}>
+      <div ref={ref} style={{ height: 500 }}>
         <h3 className="text-center">Q&A Section</h3>
         <div>
           <Container>
@@ -99,6 +101,17 @@ const Blog = () => {
             </Accordion>
           </Container>
         </div>
+      </div>
+      <div>
+        <Container className="text-center">
+          <Pdf targetRef={ref} filename="Q&A-section.pdf">
+            {({ toPdf }) => (
+              <Button variant="warning" onClick={toPdf}>
+                Download to Pdf
+              </Button>
+            )}
+          </Pdf>
+        </Container>
       </div>
     </div>
   );
