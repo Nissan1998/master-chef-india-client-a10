@@ -9,17 +9,16 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
+import useTitle from "../../MyCTitleHook/useTitle";
 
 const Login = () => {
-  const previousLocation = useLocation();
-  console.log("login page", previousLocation);
+  useTitle("Login");
   const [error, setError] = useState("");
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
 
   const handleGoogleSignIn = () => {
-    console.log("googleclicked");
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;

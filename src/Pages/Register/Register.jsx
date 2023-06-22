@@ -5,8 +5,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AuthContext } from "../../PrivetRoute/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../MyCTitleHook/useTitle";
 
 const Register = () => {
+  useTitle("Register");
   const { createUser } = useContext(AuthContext);
   const [accepted, setAccepted] = useState(false);
   const [success, setSuccess] = useState("");

@@ -1,11 +1,17 @@
 import React from "react";
 import { Accordion, Button, Container, TabContainer } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
 import Pdf from "react-to-pdf";
 
 const ref = React.createRef();
 const Blog = () => {
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Blog</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div>
         <Container className="text-center mt-2 mb-5">
           <Pdf targetRef={ref} filename="Q&A-section.pdf">

@@ -4,6 +4,7 @@ import ExtraSection from "../../../Shared/extrasection/ExtraSection";
 import BottomSection from "../../../Shared/extrasection/BottomSection";
 import Hero from "../../../HeroSection/Hero";
 import { Container, Spinner } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,11 @@ const Home = () => {
   }
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <Hero></Hero>
       <Container>
         <h1 className="h-screen text-center mt-5">OUR MASTER CHEFS</h1>

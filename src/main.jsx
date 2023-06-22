@@ -9,11 +9,14 @@ import router from "./Routes/Routes";
 import AuthProvider from "./PrivetRoute/AuthProvider";
 import "@smastrom/react-rating/style.css";
 import "react-toastify/dist/ReactToastify.css";
+import { HelmetProvider } from "react-helmet-async";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AuthProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );
