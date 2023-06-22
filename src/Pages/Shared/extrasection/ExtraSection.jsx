@@ -26,8 +26,8 @@ const ExtraSection = () => {
           <Col lg={6}>
             <div>
               <img
-                className="w-75"
-                src="https://www.kindpng.com/picc/m/2-20401_chef-girl-girl-chef-hd-logo-hd-png.png"
+                className="w-75 "
+                src="https://i.pinimg.com/564x/68/8e/1a/688e1ad62f12aaba7b7ad36bf5025a85.jpg"
                 alt=""
               />
             </div>
